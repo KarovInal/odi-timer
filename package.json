@@ -42,7 +42,9 @@
     "package": "npm run build",
     "postpackage": "electron-packager ./ --out=./builds",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint --ext .tsx,.ts src/",
+    "lint:fix": "eslint --fix --ext .tsx,.ts src/"
   },
   "dependencies": {
     "menubar": "^9.0.1",
@@ -56,6 +58,8 @@
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
+    "@typescript-eslint/eslint-plugin": "^3.3.0",
+    "@typescript-eslint/parser": "^3.3.0",
     "babel-loader": "^8.1.0",
     "babili-webpack-plugin": "^0.1.2",
     "cross-env": "^7.0.2",
@@ -63,6 +67,8 @@
     "electron": "^9.0.0",
     "electron-devtools-installer": "^3.0.0",
     "electron-packager": "^14.2.1",
+    "eslint": "^7.3.0",
+    "eslint-plugin-react": "^7.20.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
