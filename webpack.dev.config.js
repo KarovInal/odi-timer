@@ -1,7 +1,7 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { spawn } = require('child_process')
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { spawn } = require('child_process');
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
 const defaultInclude = path.resolve(__dirname, 'src')
@@ -15,9 +15,9 @@ module.exports = {
         include: defaultInclude
       },
       {
-        test: /\.jsx?$/,
-        use: [{ loader: 'babel-loader' }],
-        include: defaultInclude
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.(jpe?g|png|gif)$/,
@@ -31,6 +31,9 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
+  },
   target: 'electron-renderer',
   plugins: [
     new HtmlWebpackPlugin({title: 'Odi timer'}),
@@ -38,8 +41,9 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('development')
     })
   ],
-  devtool: 'cheap-source-map',
+  devtool: 'inline-source-map',
   devServer: {
+    historyApiFallback: true,
     contentBase: path.resolve(__dirname, 'dist'),
     stats: {
       colors: true,
