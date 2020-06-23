@@ -1,3 +1,1 @@
-import SettingButton from './setting-button';
-
-export default SettingButton;
+export { SettingButton } from './setting-button';

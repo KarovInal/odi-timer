@@ -1,8 +1,8 @@
 import React, { CSSProperties, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import BackButton from "../../components/back-button";
+import { BackButton } from "../../components/back-button";
 import { APP_NAME } from '../../constants/general-constants';
-import SettingButton from '../../components/setting-button/setting-button';
+import { SettingButton } from '../../components/setting-button';
 import './header-styles.css';
 
 export interface IHeader {
@@ -15,7 +15,7 @@ const getBackButtonStyle = (ableToBack: boolean): CSSProperties => ({
     visibility: ableToBack ? 'visible' : 'hidden',
 });
 
-const Header = ({ title = APP_NAME, ableToBack = false }: IHeader) => {
+export const Header = React.memo(({ title = APP_NAME, ableToBack = false }: IHeader) => {
     const history = useHistory();
 
     const handleBackButton = () => ableToBack && history.goBack();
@@ -29,6 +29,4 @@ const Header = ({ title = APP_NAME, ableToBack = false }: IHeader) => {
             <SettingButton />
         </div>
     );
-};
-
-export default React.memo(Header);
+});

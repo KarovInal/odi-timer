@@ -1,12 +1,12 @@
 import React from "react";
 import store from "./store";
 import { Provider } from "react-redux";
-import Page from "./modules/page-module";
+import { Page } from "./modules/page-module";
 import { APP_NAME } from "./constants/general-constants";
 import { STATISTIC_PATH, TIMER_PATH } from "./constants/paths";
 import { HashRouter, Route, Redirect, Switch } from "react-router-dom";
 
-const App = () => {
+export const App = () => {
   return (
       <Provider store={store}>
         <HashRouter>
@@ -25,5 +25,3 @@ const App = () => {
       </Provider>
   )
 };
-
-export default App;

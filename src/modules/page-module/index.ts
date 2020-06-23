@@ -1,5 +1,3 @@
-import Page, { IPage } from './page';
+import { Page, IPage } from './page';
 
-export default Page;
-
-export { IPage };
+export { IPage, Page };

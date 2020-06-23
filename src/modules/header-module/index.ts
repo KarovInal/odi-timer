@@ -1,5 +1,3 @@
-import Header, { IHeader } from './header';
+import { Header, IHeader } from './header';
 
-export default Header;
-
-export { IHeader };
+export { IHeader, Header };
