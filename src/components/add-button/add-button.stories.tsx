@@ -1,5 +1,6 @@
 import React from 'react';
-import { AddButton } from './add-button.js';
+import AddButton from './add-button';
+import '../../main.css';
 
 export const AddButtonStory = (): React.ReactNode => <AddButton />;
 
