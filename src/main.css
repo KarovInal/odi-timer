@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Inter-Regular';
+    font-weight: 300;
+    src: url('./assets/fonts/Inter-Regular-slnt=0.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter-Medium';
+    font-weight: 600;
+    src: url('./assets/fonts/Inter-Medium-slnt=0.ttf') format("truetype");
+}
+
+@font-face {
+    font-family: 'Inter-Bold';
+    font-weight: 900;
+    src: url('./assets/fonts/Inter-Bold-slnt=0.ttf') format("truetype");
+}
+
+html, body {
+    font-family: 'Inter-Regular', sans-serif;
+    user-select: none;
+}
+
+html, body, p, h1, h2, h3, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+
+.square-button {
+    width: 34px;
+    height: 34px;
+    color: #BCBDBD;
+    border: none;
+    display: flex;
+    font-size: 14px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Inter-Bold', sans-serif;
+}

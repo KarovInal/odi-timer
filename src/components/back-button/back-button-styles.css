@@ -1,0 +1,15 @@
+.back-button {
+    background-color: #242934;
+    background-image: url("../../assets/icons/back.png");
+    background-position: center;
+    background-size: 9px;
+    background-repeat: no-repeat;
+}
+
+.back-button:hover {
+    background-color: #3A4152;
+}
+
+.back-button:active {
+    background-color: #0B0D11;
+}

@@ -1,0 +1,14 @@
+.header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 36px;
+    background-color: #1D222C;
+}
+
+.header-title {
+    font-family: 'Inter-Bold', sans-serif;
+    font-size: 12px;
+    color: #fff;
+    user-select: none;
+}
