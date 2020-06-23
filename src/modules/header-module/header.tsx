@@ -1,4 +1,4 @@
-import React, {CSSProperties} from 'react';
+import React, { CSSProperties, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import BackButton from "../../components/back-button";
 import { APP_NAME } from '../../constants/general-constants';
@@ -18,17 +18,17 @@ const getBackButtonStyle = (ableToBack: boolean): CSSProperties => ({
 const Header = ({ title = APP_NAME, ableToBack = false }: IHeader) => {
     const history = useHistory();
 
-    const handleBackButton = () => {
-        ableToBack && history.goBack();
-    };
+    const handleBackButton = () => ableToBack && history.goBack();
+
+    const backButtonStyle = useMemo(() => getBackButtonStyle(ableToBack), [ableToBack]);
 
     return (
         <div className='header-wrap'>
-            <BackButton style={getBackButtonStyle(ableToBack)} onClick={handleBackButton} />
+            <BackButton style={backButtonStyle} onClick={handleBackButton} />
             <label className='header-title'>{title}</label>
             <SettingButton />
         </div>
     );
 };
 
-export default Header;
+export default React.memo(Header);
