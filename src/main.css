@@ -19,6 +19,8 @@
 html, body {
     font-family: 'Inter-Regular', sans-serif;
     user-select: none;
+    background-color: #11141B;
+    color: #FFF;
 }
 
 html, body, p, h1, h2, h3, h5, h6 {
@@ -42,4 +44,16 @@ html, body, #root {
     justify-content: center;
     cursor: pointer;
     font-family: 'Inter-Bold', sans-serif;
+}
+
+.circle-button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    display: flex;
+    color: #BCBDBD;
+    cursor: pointer;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
 }
