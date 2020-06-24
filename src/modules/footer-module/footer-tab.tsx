@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Location } from 'history';
 import { RouteComponentProps } from 'react-router';
 
@@ -9,20 +9,20 @@ interface IFooterTabProps extends RouteComponentProps {
 }
 
 const getTabIsActive = (location: Location, activeLink: string) =>
-  location.pathname === activeLink
+  location.pathname.includes(activeLink)
     ? 'footer-tab-active'
-    : ''
+    : '';
 
-const FooterTabComponent = React.memo<IFooterTabProps>(({
+const FooterTabComponent = React.memo(({
   label,
   location,
   activeLink,
-}) => {
+}: IFooterTabProps) => {
   console.log('location', location, 11);
   return (
-    <div className={[getTabIsActive(location, activeLink), 'footer-tab'].join(' ')}>
+    <Link to={activeLink} className={`${getTabIsActive(location, activeLink)} footer-tab`}>
       {label}
-    </div>
+    </Link>
   );
 });
 
