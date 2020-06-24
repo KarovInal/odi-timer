@@ -1,0 +1,27 @@
+.play-button, .pause-button {
+    background-color: #57BC62;
+}
+
+.play-button:hover, .pause-button:hover {
+    background-color: #62D36E;
+}
+
+.play-button:active, .pause-button:active {
+    background-color: #53AC5D;
+}
+
+.replay-button {
+    background-color: #242934;
+}
+
+.stop-button {
+    background-color: #EA4E43;
+}
+
+.stop-button:hover {
+    background-color: #F6594E;
+}
+
+.stop-button:active {
+    background-color: #E1453A;
+}
