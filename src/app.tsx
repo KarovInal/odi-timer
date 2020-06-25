@@ -13,7 +13,7 @@ export const App = () => {
         <Switch>
           <Route exact={true} path={TIMER_PATH}>
             <Page headerProps={{ title: APP_NAME }}>
-              TIMER ⏰
+              {new Array(201).fill('TIMER ⏰')}
             </Page>
           </Route>
 

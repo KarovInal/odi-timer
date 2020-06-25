@@ -11,8 +11,8 @@ export interface IPage {
 export const Page = (props: IPage): React.ReactElement => {
   return (
     <div className="page">
-      <Header {...props.headerProps} />
-      <div>
+      <Header className="page-header" {...props.headerProps} />
+      <div className="page-content">
         { props.children }
       </div>
       <Footer className="page-footer" />

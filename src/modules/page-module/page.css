@@ -4,6 +4,16 @@
     height: 100%;
 }
 
+.page-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.page-content {
+    padding: 36px 0 38px 0;
+}
+
 .page-footer {
     position: fixed;
     bottom: 0;
