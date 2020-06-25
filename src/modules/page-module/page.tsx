@@ -12,10 +12,10 @@ export const Page = (props: IPage): React.ReactElement => {
   return (
     <div className="page">
       <Header {...props.headerProps} />
-      <div className="page-content">
+      <div>
         { props.children }
       </div>
-      <Footer />
+      <Footer className="page-footer" />
     </div>
   );
 };

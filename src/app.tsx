@@ -12,11 +12,15 @@ export const App = () => {
       <HashRouter>
         <Switch>
           <Route exact={true} path={TIMER_PATH}>
-            <Page headerProps={{ title: APP_NAME }}>TIMER ⏰</Page>
+            <Page headerProps={{ title: APP_NAME }}>
+              TIMER ⏰
+            </Page>
           </Route>
 
           <Route exact={true} path={STATISTIC_PATH}>
-            <Page headerProps={{ title: APP_NAME }}>STATISTIC 📊</Page>
+            <Page headerProps={{ title: APP_NAME }}>
+              STATISTIC 📊
+            </Page>
           </Route>
 
           <Redirect from="/" to="/timer" />
