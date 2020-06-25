@@ -11,6 +11,23 @@
   padding: 10px 12px;
 }
 
+.input.input-green {
+  border-left: 5px solid #57BC62;
+}
+
+.input.input-yellow {
+  border-left: 5px solid #F8D65E;
+}
+
+.input.input-error {
+  color: #EA4E43;
+  border: 1px solid #EA4E43;
+}
+
+.input.input-error::placeholder {
+  color: #EA4E43;
+}
+
 .input::placeholder {
   color: #BCBDBD;
   font-weight: normal;

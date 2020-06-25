@@ -4,7 +4,13 @@ import '../../main.css';
 
 export const InputStory = () => <div style={{padding: '50px'}}>
   <Input placeholder="Add a task title" />
-</div>
+  <div style={{ height: '20px' }} />
+  <Input green placeholder="Green" />
+  <div style={{ height: '20px' }} />
+  <Input yellow placeholder="Yellow" />
+  <div style={{ height: '20px' }} />
+  <Input error placeholder="Enter correct" />
+</div>;
 
 export default {
   title: 'Input',
