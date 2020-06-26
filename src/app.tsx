@@ -5,6 +5,7 @@ import { Page } from './modules/page-module';
 import { APP_NAME } from './constants/general-constants';
 import { STATISTIC_PATH, TIMER_PATH } from './constants/paths';
 import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { CycleProgress } from './components/cycle-progress';
 
 export const App = () => {
   return (
@@ -13,6 +14,8 @@ export const App = () => {
         <Switch>
           <Route exact={true} path={TIMER_PATH}>
             <Page headerProps={{ title: APP_NAME }}>
+              <CycleProgress />
+
               {new Array(201).fill('TIMER ⏰')}
             </Page>
           </Route>
