@@ -18,7 +18,6 @@ const FooterTabComponent = React.memo(({
   location,
   activeLink,
 }: IFooterTabProps) => {
-  console.log('location', location, 11);
   return (
     <Link to={activeLink} className={`${getTabIsActive(location, activeLink)} footer-tab`}>
       {label}
