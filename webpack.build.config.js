@@ -1,8 +1,9 @@
-const webpack = require('webpack')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const BabiliPlugin = require('babili-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
 const defaultInclude = path.resolve(__dirname, 'src')
@@ -37,6 +38,7 @@ module.exports = {
     ]
   },
   resolve: {
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   target: 'electron-renderer',

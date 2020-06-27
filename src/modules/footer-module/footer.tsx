@@ -1,6 +1,6 @@
 import React from 'react';
 import { FooterTab } from './footer-tab';
-import { STATISTIC_PATH, TIMER_PATH } from '../../constants/paths';
+import { STATISTIC_PATH, TIMER_PATH } from '@/constants/paths';
 import './footer.css';
 
 type TFooterProps = {
