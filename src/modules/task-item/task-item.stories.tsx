@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { TaskItem } from './index';
 import { EControl } from '@/modules/tasks-module';
-import './task-item-styles.css';
 import '@/assets/styles/bootstrap-grid.css';
+import './task-item-styles.css';
 
 // [i.karov] Need replace useState to Redux
 
@@ -46,7 +46,7 @@ export const TaskItemStory = () => {
       finalTime={finalTime}
       optimisticTime={2000}
       pessimisticTime={3000}
-      handleControl={(type: EControl) => updateControl(type)}
+      handleControl={updateControl}
     />
   );
 };
