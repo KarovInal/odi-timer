@@ -6,7 +6,7 @@ export enum EControl {
 }
 
 export enum EStatus {
-    great ='great',
+    great = 'great',
     normal ='normal',
     bad ='bad',
 }

@@ -1,4 +1,4 @@
-const keep100 = (n: number) => n > 100 ? 100 : n;
+import clamp from 'lodash/clamp';
 
 export const msToProgress = (optimisticTime: number, pessimisticTime: number, finalTime: number) => {
   if(optimisticTime > pessimisticTime) {
@@ -11,13 +11,13 @@ export const msToProgress = (optimisticTime: number, pessimisticTime: number, fi
   }
 
   if(finalTime <= optimisticTime) {
-    const optimisticProgress = keep100((finalTime / optimisticTime) * 100);
+    const optimisticProgress = clamp((finalTime / optimisticTime) * 100, 0, 100);
 
     return [optimisticProgress, 0];
   }
 
   const defTimes = pessimisticTime - optimisticTime;
-  const pessimisticProgress = keep100(((finalTime - optimisticTime) / defTimes) * 100);
+  const pessimisticProgress = clamp(((finalTime - optimisticTime) / defTimes) * 100, 0, 100);
 
   return [100, pessimisticProgress];
 };

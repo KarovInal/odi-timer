@@ -19,7 +19,7 @@ export const TaskItem = (props: ITaskItem) => {
   return (
     <div className='task-item flex-column'>
       <div className='task-item__top'>
-        <div className='between-xs d-flex justify-content-between align-items-center'>
+        <div className='d-flex justify-content-between align-items-center'>
           <span className='task-item__title'>{props.title}</span>
           <div className='task-item__final-time d-flex align-items-center justify-content-between'>
             <span>
