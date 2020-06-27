@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   'env': {
     'browser': true,
@@ -21,7 +22,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   'rules': {
-    'react/display-name': 0,
     'indent': [
       'error',
       2
@@ -37,6 +37,8 @@ module.exports = {
     'semi': [
       'error',
       'always'
-    ]
+    ],
+    'react/display-name': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   }
 };
