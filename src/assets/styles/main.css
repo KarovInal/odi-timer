@@ -1,23 +1,11 @@
 @font-face {
-    font-family: 'Inter-Regular';
-    font-weight: 300;
-    src: url('./assets/fonts/Inter-Regular-slnt=0.ttf') format("truetype");
-}
-
-@font-face {
-    font-family: 'Inter-Medium';
-    font-weight: 600;
-    src: url('./assets/fonts/Inter-Medium-slnt=0.ttf') format("truetype");
-}
-
-@font-face {
-    font-family: 'Inter-Bold';
-    font-weight: 900;
-    src: url('./assets/fonts/Inter-Bold-slnt=0.ttf') format("truetype");
+    font-family: Inter;
+    src: url('../fonts/Inter.ttf') format("truetype");
 }
 
 html, body {
-    font-family: 'Inter-Regular', sans-serif;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
     user-select: none;
     background-color: #11141B;
     color: #FFF;
@@ -32,6 +20,10 @@ html, body, #root {
     height: 100%;
 }
 
+div {
+    box-sizing: border-box;
+}
+
 .square-button {
     width: 34px;
     height: 34px;
@@ -43,17 +35,16 @@ html, body, #root {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-family: 'Inter-Bold', sans-serif;
 }
 
 .circle-button {
     width: 24px;
     height: 24px;
     border: none;
-    display: flex;
     color: #BCBDBD;
     cursor: pointer;
     border-radius: 100%;
     align-items: center;
+    display: inline-flex;
     justify-content: center;
 }
