@@ -1,0 +1,29 @@
+.horizontal-progress {
+    height: 3px;
+    display: flex;
+}
+
+.horizontal-progress__item {
+    height: 100%;
+    transition: all .1s linear;
+}
+
+.horizontal-progress__optimistic-not-fill {
+    background-color: rgba(87, 188, 98, 0.4);
+}
+
+.horizontal-progress__optimistic-fill {
+    background-color: rgb(87, 188, 98);
+}
+
+.horizontal-progress__pessimistic-not-fill {
+    background-color: rgba(248, 214, 94, 0.4);
+}
+
+.horizontal-progress__pessimistic-fill {
+    background-color: rgb(248, 214, 94);
+}
+
+.horizontal-progress__fail-fill {
+    background-color: #EA4E43;
+}
