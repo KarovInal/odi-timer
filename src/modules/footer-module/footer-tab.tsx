@@ -17,12 +17,10 @@ const FooterTabComponent = React.memo(({
   label,
   location,
   activeLink,
-}: IFooterTabProps) => {
-  return (
-    <Link to={activeLink} className={`${getTabIsActive(location, activeLink)} footer-tab`}>
-      {label}
-    </Link>
-  );
-});
+}: IFooterTabProps) => (
+  <Link to={activeLink} className={`${getTabIsActive(location, activeLink)} footer-tab`}>
+    {label}
+  </Link>
+));
 
 export const FooterTab = withRouter(FooterTabComponent);

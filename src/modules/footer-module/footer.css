@@ -25,13 +25,20 @@
     text-decoration: none;
 }
 
-.footer-tab:hover {
+.footer .footer-tab.footer-tab-active:hover {
     cursor: pointer;
-    filter: alpha(opacity=98);
-    opacity: 0.98;
+    background: #414757;
 }
 
-.footer .footer-tab-active:active, .footer-tab:active {
+.footer .footer-tab:hover {
     cursor: pointer;
-    opacity: 1;
+    background: #252B36;
+}
+
+.footer .footer-tab.footer-tab-active:active {
+    background: #3F4554;
+}
+
+.footer .footer-tab:active {
+    background: #232832;
 }

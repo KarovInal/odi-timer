@@ -8,6 +8,7 @@ import './header-styles.css';
 export interface IHeader {
     title?: string;
     ableToBack?: boolean;
+    className?: string;
 }
 
 const getBackButtonStyle = (ableToBack: boolean): CSSProperties => ({
@@ -15,7 +16,7 @@ const getBackButtonStyle = (ableToBack: boolean): CSSProperties => ({
   visibility: ableToBack ? 'visible' : 'hidden',
 });
 
-export const Header = React.memo(({ title = APP_NAME, ableToBack = false }: IHeader) => {
+export const Header = React.memo(({ title = APP_NAME, ableToBack = false, className = '' }: IHeader) => {
   const history = useHistory();
 
   const handleBackButton = () => ableToBack && history.goBack();
@@ -23,7 +24,7 @@ export const Header = React.memo(({ title = APP_NAME, ableToBack = false }: IHea
   const backButtonStyle = useMemo(() => getBackButtonStyle(ableToBack), [ableToBack]);
 
   return (
-    <div className='header-wrap'>
+    <div className={`header-wrap ${className}`}>
       <BackButton style={backButtonStyle} onClick={handleBackButton} />
       <label className='header-title'>{title}</label>
       <SettingButton />
