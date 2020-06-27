@@ -1,0 +1,22 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.page-content {
+    height: 100%;
+    overflow-y: auto;
+    margin: 36px 0 38px 0;
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 0;
+}
