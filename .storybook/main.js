@@ -1,3 +1,5 @@
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 module.exports = {
   stories: [
     '../stories/**/*.stories.js',
@@ -18,6 +20,7 @@ module.exports = {
       ],
     });
     config.resolve.extensions.push('.ts', '.tsx');
+    config.resolve.plugins = [(new TsconfigPathsPlugin({ configFile: './tsconfig.json' }))];
     return config;
   },
 };
