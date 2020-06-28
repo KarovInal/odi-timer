@@ -1,21 +1,15 @@
 import React from 'react';
 import { msToHms } from '@/utils/ms-to-hms';
 import { Controllers } from './components/controllers';
-import { EControl, EStatus } from '@/modules/tasks-module';
+import { EControl, ITaskItem } from '@/modules/tasks-module';
 import { HorizontalProgress } from '@/components/horizontal-progress';
 import './task-item-styles.css';
 
-interface ITaskItem {
-  title?: string;
-  status?: EStatus;
-  control?: EControl;
-  finalTime?: number;
-  optimisticTime?: number;
-  pessimisticTime?: number;
+interface ITaskItemProps extends ITaskItem {
   handleControl?: (type: EControl) => void;
 }
 
-export const TaskItem = (props: ITaskItem) => {
+export const TaskItem = (props: ITaskItemProps) => {
   return (
     <div className='task-item flex-column'>
       <div className='task-item__top'>

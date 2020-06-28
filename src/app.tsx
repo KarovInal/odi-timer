@@ -1,5 +1,5 @@
 import React from 'react';
-import store from './store';
+import { store } from './store';
 import { Provider } from 'react-redux';
 import { Page } from './modules/page-module';
 import { APP_NAME } from './constants/general-constants';

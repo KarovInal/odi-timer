@@ -8,5 +8,16 @@ export enum EControl {
 export enum EStatus {
     great = 'great',
     normal ='normal',
-    bad ='bad',
+    bad = 'bad',
+    none = 'none',
+}
+
+export interface ITaskItem {
+    id?: string;
+    title?: string;
+    status?: EStatus;
+    control?: EControl;
+    finalTime?: number;
+    optimisticTime?: number;
+    pessimisticTime?: number;
 }
