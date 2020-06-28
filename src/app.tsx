@@ -12,15 +12,17 @@ export const App = () => {
       <HashRouter>
         <Switch>
           <Route exact={true} path={TIMER_PATH}>
-            <Page headerProps={{ title: APP_NAME }}>
-              {new Array(201).fill('TIMER ⏰')}
-            </Page>
+            <Page
+              headerProps={{ title: APP_NAME }}
+              textHelper="no tasks added, create new one"
+            />
           </Route>
 
           <Route exact={true} path={STATISTIC_PATH}>
-            <Page headerProps={{ title: APP_NAME }}>
-              STATISTIC 📊
-            </Page>
+            <Page
+              headerProps={{ title: APP_NAME }}
+              textHelper="statistics are not available because no tasks have been added"
+            />
           </Route>
 
           <Redirect from="/" to="/timer" />
