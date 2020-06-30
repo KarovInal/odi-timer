@@ -1,0 +1,9 @@
+.preferences {
+    padding: 16px;
+}
+
+.preferences-flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

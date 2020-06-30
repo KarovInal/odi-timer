@@ -6,7 +6,7 @@ import './page.css';
 export interface IPageProps {
     children?: React.ReactNode;
     headerProps: IHeader;
-    textHelper: string;
+    textHelper?: string;
 }
 
 export const Page = ({
@@ -14,11 +14,15 @@ export const Page = ({
   children,
   textHelper,
 }: IPageProps): React.ReactElement => {
+  const content = children
+    ? children
+    : Boolean(textHelper) && <p className="page-content-helper-text">{textHelper}</p>;
+
   return (
     <div className="page">
       <Header className="page-header" {...headerProps} />
       <div className="page-content">
-        { children ?? <p className="page-content-helper-text">{textHelper}</p> }
+        { content }
       </div>
       <Footer className="page-footer" />
     </div>
