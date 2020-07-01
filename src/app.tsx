@@ -11,6 +11,7 @@ import {
   STATISTIC_PATH,
   TIMER_PATH,
 } from './constants';
+import 'antd/dist/antd.css';
 
 export const App = () => {
   return (
