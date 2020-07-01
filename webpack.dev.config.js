@@ -19,7 +19,7 @@ module.exports = {
         ],
         include: [
           defaultInclude,
-          path.resolve(__dirname, 'node_modules/antd/dist'),
+          path.resolve(__dirname, 'node_modules/rc-switch'),
         ]
       },
       {
