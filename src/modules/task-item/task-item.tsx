@@ -1,4 +1,5 @@
 import React from 'react';
+import noop from 'lodash/noop';
 import { msToHms } from '@/utils/ms-to-hms';
 import { Controllers } from './components/controllers';
 import { EControl, ITaskItem } from '@/modules/tasks-module';
@@ -23,7 +24,7 @@ export const TaskItem = (props: ITaskItemProps) => {
                 )
               }
             </span>
-            <Controllers handleControl={props.handleControl} finalTime={props.finalTime} control={props.control} />
+            <Controllers handleControl={props?.handleControl ?? noop} finalTime={props.finalTime} control={props.control} />
           </div>
         </div>
         <div className='task-item__header-times'>
