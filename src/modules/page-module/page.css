@@ -17,16 +17,6 @@
     background-color: #11141B;
 }
 
-.page-content-helper-text {
-    padding: 126px 40px 0;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-
-    color: #BCBDBD;
-}
-
 .page-footer {
     position: fixed;
     bottom: 0;
