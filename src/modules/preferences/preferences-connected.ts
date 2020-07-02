@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { get as getFp } from 'lodash/fp';
-import { PREFERENCES_STORE_KEY } from '@/modules/preferences/preferences-constants';
-import { EPreferencesFields } from '@/modules/preferences/preferences-enums';
+import { PREFERENCES_STORE_KEY } from './preferences-constants';
+import { EPreferencesFields } from './preferences-enums';
 import { Preferences } from './preferences';
 
 const getPreferencesStore = getFp(PREFERENCES_STORE_KEY);
