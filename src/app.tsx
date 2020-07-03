@@ -1,10 +1,16 @@
 import React from 'react';
-import { store } from './store';
 import { Provider } from 'react-redux';
-import { Page } from './modules/page-module';
-import { APP_NAME } from './constants/general-constants';
-import { STATISTIC_PATH, TIMER_PATH } from './constants/paths';
 import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { store } from './store';
+import { Page } from './modules/page-module';
+import { Preferences } from './modules/preferences';
+import {
+  APP_NAME,
+  PREFERENCES,
+  PREFERENCES_PATH,
+  STATISTIC_PATH,
+  TIMER_PATH,
+} from './constants';
 
 export const App = () => {
   return (
@@ -23,6 +29,12 @@ export const App = () => {
               headerProps={{ title: APP_NAME }}
               textHelper="statistics are not available because no tasks have been added"
             />
+          </Route>
+
+          <Route exact={true} path={PREFERENCES_PATH}>
+            <Page headerProps={{ title: PREFERENCES, ableToBack: true }}>
+              <Preferences />
+            </Page>
           </Route>
 
           <Redirect from="/" to="/timer" />
