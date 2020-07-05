@@ -1,0 +1,17 @@
+.remove-button {
+  background-color: #EA4E43;
+  background-image: url("../../assets/icons/remove.png");
+  background-position: center;
+  background-size: 10px;
+  background-repeat: no-repeat;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+  background-color: #F6594E;
+}
+
+.remove-button:active {
+  cursor: pointer;
+  background-color: #E1453A;
+}
