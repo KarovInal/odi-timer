@@ -1,15 +1,6 @@
 import clamp from 'lodash/clamp';
 
-export const msToProgress = (optimisticTime: number, pessimisticTime: number, finalTime: number) => {
-  if(optimisticTime > pessimisticTime) {
-    console.warn('Not correct values');
-    return [0, 0, 0];
-  }
-
-  if(finalTime >= pessimisticTime) {
-    return [100, 100];
-  }
-
+export const msToProgress = (optimisticTime: number, pessimisticTime: number, finalTime: number): [number, number] => {
   if(finalTime <= optimisticTime) {
     const optimisticProgress = clamp((finalTime / optimisticTime) * 100, 0, 100);
 

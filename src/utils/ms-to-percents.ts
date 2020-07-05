@@ -1,19 +1,16 @@
-export const msToPercent = (optimisticTime: number, pessimisticTime: number, finalTime: number) => {
-  if(optimisticTime > pessimisticTime) {
-    console.warn('Not correct values');
-    return [0, 0, 0];
-  }
+import max from 'lodash/max';
 
-  if (finalTime < pessimisticTime) {
-    const optimisticPercent = (optimisticTime / pessimisticTime) * 100;
-    const pessimisticPercent = 100 - optimisticPercent;
+const sum = (a: number, b: number) => a - b > 0 ? a - b : 0;
 
-    return [optimisticPercent, pessimisticPercent, 0];
-  }
+export const msToPercent = (optimisticTime: number, pessimisticTime: number, finalTime: number):[number, number, number] => {
+  const pX = sum(pessimisticTime, optimisticTime);
+  const fX = sum(finalTime, pX + optimisticTime);
 
-  const optimisticPercent = (optimisticTime / finalTime) * 100;
-  const pessimisticPercent = ((pessimisticTime / finalTime) * 100) - optimisticPercent;
-  const finalPercent = 100 - (pessimisticPercent + optimisticPercent);
+  const maxValue = max([optimisticTime, pessimisticTime, finalTime]);
 
-  return [optimisticPercent, pessimisticPercent, finalPercent];
+  const fin = ((fX / maxValue) * 100) || 0;
+  const pes = ((pX / maxValue) * 100) || 0;
+  const opt = ((optimisticTime / maxValue) * 100) || 0;
+
+  return [opt, pes, fin];
 };

@@ -2,7 +2,7 @@ import omit from 'lodash/omit';
 import { ITaskItem } from './tasks-types';
 import { CREATE_TASK, REMOVE_TASK, UPDATE_TASK } from './tasks-constants';
 
-interface ITasksReducer {
+export interface ITasksReducer {
   [key: string]: ITaskItem
 }
 

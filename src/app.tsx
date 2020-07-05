@@ -3,6 +3,9 @@ import { Provider } from 'react-redux';
 import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { store } from './store';
 import { Page } from './modules/page-module';
+import { TaskForm } from '@/modules/task-form-module';
+import { HelperText } from '@/components/helper-text';
+import { TimerList } from '@/modules/timer-list-module';
 import { Preferences } from './modules/preferences';
 import {
   APP_NAME,
@@ -10,6 +13,7 @@ import {
   PREFERENCES_PATH,
   STATISTIC_PATH,
   TIMER_PATH,
+  CREATE_TASK,
 } from './constants';
 
 export const App = () => {
@@ -18,17 +22,23 @@ export const App = () => {
       <HashRouter>
         <Switch>
           <Route exact={true} path={TIMER_PATH}>
-            <Page
-              headerProps={{ title: APP_NAME }}
-              textHelper="no tasks added, create new one"
-            />
+            <Page headerProps={{ title: APP_NAME }}>
+              <TimerList />
+            </Page>
           </Route>
 
           <Route exact={true} path={STATISTIC_PATH}>
-            <Page
-              headerProps={{ title: APP_NAME }}
-              textHelper="statistics are not available because no tasks have been added"
-            />
+            <Page headerProps={{ title: APP_NAME }}>
+              <HelperText>
+                statistics are not available because no tasks have been added
+              </HelperText>
+            </Page>
+          </Route>
+
+          <Route exact={true} path={CREATE_TASK}>
+            <Page headerProps={{ title: 'Adding task', ableToBack: true }}>
+              <TaskForm />
+            </Page>
           </Route>
 
           <Route exact={true} path={PREFERENCES_PATH}>

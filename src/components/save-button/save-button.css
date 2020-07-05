@@ -1,0 +1,17 @@
+.save-button {
+  background-color: #069DF9;
+  background-image: url("../../assets/icons/save.png");
+  background-position: center;
+  background-size: 10px;
+  background-repeat: no-repeat;
+}
+
+.save-button:hover {
+  cursor: pointer;
+  background-color: #21ABFF;
+}
+
+.save-button:active {
+  cursor: pointer;
+  background-color: #018EE4;
+}

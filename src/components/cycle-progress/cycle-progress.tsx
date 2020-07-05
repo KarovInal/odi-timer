@@ -12,6 +12,7 @@ const colorMap = ['#57BC62', '#F8D65E', '#EA4E43'];
 export const CycleProgress = React.memo((props: ICycleProgress) => {
   return (
     <Circle
+      className='cycle-wrapper'
       strokeWidth={7.6}
       strokeColor={colorMap}
       trailWidth={7}

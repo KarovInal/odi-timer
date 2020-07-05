@@ -1,0 +1,9 @@
+.timer-list {
+    padding-bottom: 60px;
+}
+
+.timer-list__create-task-button {
+    position: absolute;
+    bottom: 53px;
+    right: 16px;
+}
