@@ -1,8 +1,8 @@
 import React, { CSSProperties, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import { BackButton } from '../../components/back-button';
-import { APP_NAME } from '../../constants/general-constants';
-import { SettingButton } from '../../components/setting-button';
+import { BackButton } from '@/components/back-button';
+import { APP_NAME } from '@/constants/general-constants';
+import { SettingButton } from '@/components/setting-button';
 import './header-styles.css';
 
 export interface IHeader {

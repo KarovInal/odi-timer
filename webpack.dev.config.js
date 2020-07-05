@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { spawn } = require('child_process');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 // Any directories you will be adding code/files into, need to be added to this array so webpack will pick them up
 const defaultInclude = path.resolve(__dirname, 'src')
@@ -11,8 +12,15 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'postcss-loader' }],
-        include: defaultInclude
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
+        ],
+        include: [
+          defaultInclude,
+          path.resolve(__dirname, 'node_modules/rc-switch'),
+        ]
       },
       {
         test: /\.tsx?$/,
@@ -32,6 +40,7 @@ module.exports = {
     ]
   },
   resolve: {
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   target: 'electron-renderer',

@@ -1,3 +1,1 @@
-import { Page, IPage } from './page';
-
-export { IPage, Page };
+export { IPageProps, Page } from './page';
