@@ -1,3 +1,82 @@
+.statistics-top {
+    top: 0;
+    position: sticky;
+    height: 134px;
+    background-color: #11141B;
+    border-bottom: 1px solid #1D222C;
+    padding: 16px;
+    display: flex;
+}
+
+.statistics-top-smile {
+    width: 96px;
+    height: 96px;
+    background: beige;
+}
+
+.statistics-top-stats {
+    margin-left: 20px;
+}
+
+.statistics-top-stats-table {
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+.statistics-top-stats-description {
+    color: #BCBDBD;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
 .statistics-item {
+    height: 49px;
+    background: #080A0E;
     border-top: 1px solid #1D222C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+}
+
+.statistics-item-dot {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.statistics-item-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.statistics-item-dot-bad {
+    background: #EA4E43;
+}
+
+.statistics-item-dot-normal {
+    background: #F8D65E;
+}
+
+.statistics-item-dot-great {
+    background: #57BC62;
+}
+
+.statistics-item-bad {
+    color: #EA4E43;
+}
+
+.statistics-item-normal {
+    color: #F8D65E;
+}
+
+.statistics-item-great {
+    color: #57BC62;
 }

@@ -64,6 +64,96 @@ export const mockData: IMockData = {
         'finalTime': 300000,
         'optimisticTime': 400000,
         'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5853': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5854': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5855': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5856': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5857': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5858': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5859': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5860': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5861': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
+      },
+      'e92323283-015d-4476-a5dc-dacjd34b5862': {
+        'id': 'e92323283-015d-4476-a5dc-dacjd34b5852',
+        'title': 'Launch on Product Hunt',
+        'status': EStatus.great,
+        'control': EControl.finished,
+        'finalTime': 300000,
+        'optimisticTime': 400000,
+        'pessimisticTime': 800000
       }
     }
   }
