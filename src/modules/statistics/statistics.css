@@ -43,6 +43,10 @@
     font-size: 12px;
 }
 
+.statistics-item:hover {
+    background: #0e1218;
+}
+
 .statistics-item-dot {
     display: block;
     width: 4px;
