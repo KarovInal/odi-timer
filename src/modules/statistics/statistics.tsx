@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
+import { filter as filterFp, size } from 'lodash/fp';
 import { Link } from 'react-router-dom';
-import { ITaskItem } from '@/modules/tasks-module';
+import { EStatus, ITaskItem } from '@/modules/tasks-module';
 import { msToHms } from '@/utils/ms-to-hms';
 import { HelperText } from '@/components/helper-text';
 import { getFinishedTasks } from './statistics-selectors';
@@ -20,6 +21,10 @@ export const Statistics = React.memo<TStatisticsProps>(() => {
     </HelperText>;
   }
 
+  const greatTasksCount = size(filterFp({ status: EStatus.great })(finishedTasks));
+  const normalTasksCount = size(filterFp({ status: EStatus.normal })(finishedTasks));
+  const badTasksCount = size(filterFp({ status: EStatus.bad })(finishedTasks));
+
   return (
     <React.Fragment>
       <div className="statistics-top">
@@ -28,7 +33,7 @@ export const Statistics = React.memo<TStatisticsProps>(() => {
           <table className="statistics-top-stats-table">
             <tr>
               <td>
-                17
+                {finishedTasks.length}
               </td>
               <td className="statistics-top-stats-description">
                 total tasks
@@ -36,7 +41,7 @@ export const Statistics = React.memo<TStatisticsProps>(() => {
             </tr>
             <tr>
               <td className="statistics-item-great">
-                2
+                {greatTasksCount}
               </td>
               <td className="statistics-top-stats-description">
                 in time
@@ -44,7 +49,7 @@ export const Statistics = React.memo<TStatisticsProps>(() => {
             </tr>
             <tr>
               <td className="statistics-item-normal">
-                3
+                {normalTasksCount}
               </td>
               <td className="statistics-top-stats-description">
                 a little late
@@ -52,7 +57,7 @@ export const Statistics = React.memo<TStatisticsProps>(() => {
             </tr>
             <tr>
               <td className="statistics-item-bad">
-                4
+                {badTasksCount}
               </td>
               <td className="statistics-top-stats-description">
                 expired
