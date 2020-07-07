@@ -41,3 +41,24 @@
     font-size: 12px;
     line-height: 15px;
 }
+
+.top-block-item-bad {
+    color: #EA4E43;
+}
+
+.top-block-item-normal {
+    color: #F8D65E;
+}
+
+.top-block-item-great {
+    color: #57BC62;
+}
+
+.top-block-stats-table-row {
+    vertical-align: baseline;
+}
+
+.top-block-stats-table-count {
+    text-align: right;
+    padding-right: 8px;
+}

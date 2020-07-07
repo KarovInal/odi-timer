@@ -55,32 +55,32 @@ export const TopBlock = React.memo(({ finishedTasks }: TTopBlockProps) => {
       </div>
       <div className="top-block-stats">
         <table className="top-block-stats-table">
-          <tr>
-            <td>
+          <tr className="top-block-stats-table-row">
+            <td className="top-block-stats-table-count">
               {finishedTasks.length}
             </td>
             <td className="top-block-stats-description">
               total tasks
             </td>
           </tr>
-          <tr>
-            <td className="statistics-item-great">
+          <tr className="top-block-stats-table-row">
+            <td className="top-block-stats-table-count top-block-item-great">
               {great}
             </td>
             <td className="top-block-stats-description">
               in time
             </td>
           </tr>
-          <tr>
-            <td className="statistics-item-normal">
+          <tr className="top-block-stats-table-row">
+            <td className="top-block-stats-table-count top-block-item-normal">
               {normal}
             </td>
             <td className="top-block-stats-description">
               a little late
             </td>
           </tr>
-          <tr>
-            <td className="statistics-item-bad">
+          <tr className="top-block-stats-table-row">
+            <td className="top-block-stats-table-count top-block-item-bad">
               {bad}
             </td>
             <td className="top-block-stats-description">
