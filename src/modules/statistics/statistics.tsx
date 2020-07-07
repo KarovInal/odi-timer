@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import { ITaskItem } from '@/modules/tasks-module';
 import { msToHms } from '@/utils/ms-to-hms';
 import { HelperText } from '@/components/helper-text';
+import { CycleProgress } from '@/components/cycle-progress';
 import { getFinishedTasks } from './statistics-selectors';
+import { tasksToPercents } from './statistics-utils';
 import './statistics.css';
 
 type TStatisticsProps = {
@@ -29,7 +31,12 @@ export const Statistics = React.memo<TStatisticsProps>(() => {
   return (
     <React.Fragment>
       <div className="statistics-top">
-        <div className="statistics-top-smile">1</div>
+        <div className="statistics-top-smile">
+          <CycleProgress
+            className="statistics-top-smile"
+            percents={tasksToPercents(great, normal, bad)}
+          />
+        </div>
         <div className="statistics-top-stats">
           <table className="statistics-top-stats-table">
             <tr>
