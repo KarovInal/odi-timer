@@ -8,9 +8,22 @@
     display: flex;
 }
 
-.statistics-top-smile {
+.statistics-top-smile-wrapper {
     width: 96px;
     height: 96px;
+    position: relative;
+}
+
+.statistics-top-smile-cycle {
+    width: 96px;
+    height: 96px;
+}
+
+.statistics-top-smile {
+    position: absolute;
+    bottom: 24px;
+    left: calc(50% + -24px);
+    width: 48px;
 }
 
 .statistics-top-stats {

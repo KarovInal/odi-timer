@@ -28,14 +28,47 @@ export const Statistics = React.memo<TStatisticsProps>(() => {
     groupBy('status'),
   )(finishedTasks);
 
+  const percents = tasksToPercents(great, normal, bad);
+  const goodPercents = percents[0];
+
+  let smileUrl = {
+    default: '',
+  };
+
+  switch (true) {
+  /* eslint-disable indent */
+    case (goodPercents >= 80):
+      smileUrl = require('./assets/Great.svg');
+      break;
+
+    case (goodPercents >= 70):
+      smileUrl = require('./assets/Good.svg');
+      break;
+
+    case (goodPercents >= 60):
+      smileUrl = require('./assets/Normal.svg');
+      break;
+
+    case (goodPercents >= 50):
+      smileUrl = require('./assets/Bad.svg');
+      break;
+
+    case (goodPercents >= 40):
+    default:
+      smileUrl = require('./assets/Awfull.svg');
+      break;
+  /* eslint-enable indent */
+  }
+
   return (
     <React.Fragment>
       <div className="statistics-top">
-        <div className="statistics-top-smile">
+        <div className="statistics-top-smile-wrapper">
           <CycleProgress
-            className="statistics-top-smile"
-            percents={tasksToPercents(great, normal, bad)}
+            className="statistics-top-smile-cycle"
+            percents={percents}
           />
+          <img className="statistics-top-smile" src={smileUrl.default} alt=""/>
         </div>
         <div className="statistics-top-stats">
           <table className="statistics-top-stats-table">
