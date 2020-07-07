@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { isEmpty } from 'lodash';
 import { Link } from 'react-router-dom';
 import { ITaskItem } from '@/modules/tasks-module';
 import { msToHms } from '@/utils/ms-to-hms';
+import { HelperText } from '@/components/helper-text';
 import { getFinishedTasks } from './statistics-selectors';
 import './statistics.css';
 
@@ -11,6 +13,12 @@ type TStatisticsProps = {
 
 export const Statistics = React.memo<TStatisticsProps>(() => {
   const finishedTasks: ITaskItem[] = useSelector(getFinishedTasks);
+
+  if (isEmpty(finishedTasks)) {
+    return <HelperText>
+      statistics are not available because no tasks have been added
+    </HelperText>;
+  }
 
   return (
     <React.Fragment>
