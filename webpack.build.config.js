@@ -18,7 +18,10 @@ module.exports = {
           'css-loader',
           'postcss-loader'
         ],
-        include: defaultInclude
+        include: [
+          defaultInclude,
+          path.resolve(__dirname, 'node_modules/rc-switch'),
+        ]
       },
       {
         test: /\.tsx?$/,
