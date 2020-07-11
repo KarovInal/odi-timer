@@ -5,14 +5,15 @@ import {PauseButton, PlayButton, ReplayButton, StopButton} from '@/components/co
 interface IControllers {
   control: EControl;
   finalTime: number;
-  handleControl: (type: EControl) => void;
+  taskId: string;
+  handleControl?: (taskId: string, control: EControl) => void;
 }
 
 export const Controllers = (props: IControllers) => {
   if(props.control === EControl.pause && props.finalTime === 0) {
     return (
       <>
-        <PlayButton onClick={() => props.handleControl(EControl.play)}/>
+        <PlayButton onClick={() => props.handleControl(props.taskId, EControl.play)}/>
       </>
     );
   }
@@ -20,9 +21,9 @@ export const Controllers = (props: IControllers) => {
   if(props.control === EControl.pause && props.finalTime > 0) {
     return (
       <>
-        <ReplayButton onClick={() => props.handleControl(EControl.replay)}/>
-        <StopButton onClick={() => props.handleControl(EControl.finished)}/>
-        <PlayButton onClick={() => props.handleControl(EControl.play)}/>
+        <ReplayButton onClick={() => props.handleControl(props.taskId, EControl.replay)}/>
+        <StopButton onClick={() => props.handleControl(props.taskId, EControl.finished)}/>
+        <PlayButton onClick={() => props.handleControl(props.taskId, EControl.play)}/>
       </>
     );
   }
@@ -30,7 +31,7 @@ export const Controllers = (props: IControllers) => {
   if(props.control === EControl.play) {
     return (
       <>
-        <PauseButton onClick={() => props.handleControl(EControl.pause)}/>
+        <PauseButton onClick={() => props.handleControl(props.taskId, EControl.pause)}/>
       </>
     );
   }

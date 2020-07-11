@@ -46,7 +46,7 @@ export const TaskItemStory = () => {
       finalTime={finalTime}
       optimisticTime={2000}
       pessimisticTime={3000}
-      handleControl={updateControl}
+      handleControl={(taskId, control) => updateControl(control)}
     />
   );
 };
