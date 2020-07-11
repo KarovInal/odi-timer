@@ -1,5 +1,4 @@
 import React from 'react';
-import noop from 'lodash/noop';
 import { msToHms } from '@/utils/ms-to-hms';
 import { Controllers } from './components/controllers';
 import { EControl, ITaskItem } from '@/modules/tasks-module';
@@ -7,7 +6,7 @@ import { HorizontalProgress } from '@/components/horizontal-progress';
 import './task-item-styles.css';
 
 interface ITaskItemProps extends ITaskItem {
-  handleControl?: (type: EControl) => void;
+  handleControl?: (taskId: string, control: EControl) => void;
 }
 
 export const TaskItem = (props: ITaskItemProps) => {
@@ -24,7 +23,7 @@ export const TaskItem = (props: ITaskItemProps) => {
                 )
               }
             </span>
-            <Controllers handleControl={props?.handleControl ?? noop} finalTime={props.finalTime} control={props.control} />
+            <Controllers handleControl={props.handleControl} taskId={props.id} finalTime={props.finalTime} control={props.control} />
           </div>
         </div>
         <div className='task-item__header-times'>
