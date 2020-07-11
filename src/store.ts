@@ -3,8 +3,9 @@ import logger from 'redux-logger';
 import Store from 'electron-store';
 import { mockData } from './mock-store-data';
 import { tasksReducer } from '@/modules/tasks-module';
-import { PREFERENCES_STORE_KEY, preferencesReducer } from '@/modules/preferences';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { PREFERENCES_STORE_KEY, preferencesReducer } from '@/modules/preferences';
+import { counterMiddleware, counterReducer, COUNTER_STORE_KEY } from '@/modules/counter-module';
 
 declare global {
   interface Window {
@@ -18,12 +19,14 @@ const electronStore = new Store({
 
 const rootReducer = combineReducers({
   tasks: tasksReducer,
+  [COUNTER_STORE_KEY]: counterReducer,
   [PREFERENCES_STORE_KEY]: preferencesReducer,
 });
 
 const middleware = applyMiddleware(
-  logger,
   thunk,
+  counterMiddleware,
+  logger,
 );
 
 export const store = createStore(rootReducer, electronStore.get('redux'), middleware);

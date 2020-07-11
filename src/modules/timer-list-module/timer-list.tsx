@@ -2,10 +2,10 @@ import React from 'react';
 import map from 'lodash/map';
 import isEmpty from 'lodash/isEmpty';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { TaskItem } from '@/modules/task-item';
 import { CREATE_TASK } from '@/constants/paths';
-import { ITaskItem } from '@/modules/tasks-module';
+import { EControl, ITaskItem, updateControl } from '@/modules/tasks-module';
 import { AddButton } from '@/components/add-button';
 import { HelperText } from '@/components/helper-text';
 import { getActiveTasks } from '@/selectors/tasks-selectors';
@@ -13,6 +13,9 @@ import './timer-list-styles.css';
 
 export const TimerList = () => {
   const activeTasks = useSelector(getActiveTasks);
+  const dispatch = useDispatch();
+
+  const handleControl = (taskId: string, control: EControl) => dispatch(updateControl(taskId, control));
 
   return (
     <div className='timer-list'>
@@ -22,7 +25,7 @@ export const TimerList = () => {
       {
         isEmpty(activeTasks)
           ? <HelperText>no tasks added, create new one</HelperText>
-          : map(activeTasks, (activeTask: ITaskItem, index) => <TaskItem key={index} {...activeTask} />)
+          : map(activeTasks, (activeTask: ITaskItem, index) => <TaskItem handleControl={handleControl} key={index} {...activeTask} />)
       }
     </div>
   );
