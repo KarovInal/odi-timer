@@ -7,6 +7,7 @@ import { TaskForm } from '@/modules/task-form-module';
 import { HelperText } from '@/components/helper-text';
 import { TimerList } from '@/modules/timer-list-module';
 import { Preferences } from './modules/preferences';
+import { Statistics } from './modules/statistics';
 import {
   APP_NAME,
   PREFERENCES,
@@ -29,9 +30,7 @@ export const App = () => {
 
           <Route exact={true} path={STATISTIC_PATH}>
             <Page headerProps={{ title: APP_NAME }}>
-              <HelperText>
-                statistics are not available because no tasks have been added
-              </HelperText>
+              <Statistics />
             </Page>
           </Route>
 

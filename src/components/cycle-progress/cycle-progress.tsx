@@ -5,20 +5,24 @@ import './cycle-progress.css';
 
 interface ICycleProgress {
   percents: [number, number, number];
+  className?: string;
 }
 
 const colorMap = ['#57BC62', '#F8D65E', '#EA4E43'];
 
-export const CycleProgress = React.memo((props: ICycleProgress) => {
+export const CycleProgress = React.memo(({
+  percents,
+  className = 'cycle-wrapper',
+}: ICycleProgress) => {
   return (
     <Circle
-      className='cycle-wrapper'
+      className={className}
       strokeWidth={7.6}
       strokeColor={colorMap}
       trailWidth={7}
       trailColor="#242934"
       strokeLinecap="round"
-      percent={props.percents}
+      percent={percents}
       gapPosition="bottom"
       gapDegree={90}
     />

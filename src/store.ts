@@ -2,7 +2,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import Store from 'electron-store';
 import { mockData } from './mock-store-data';
-import { tasksReducer } from '@/modules/tasks-module';
+import { TASKS_STORE_KEY, tasksReducer } from '@/modules/tasks-module';
 import { PREFERENCES_STORE_KEY, preferencesReducer } from '@/modules/preferences';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 
@@ -17,7 +17,7 @@ const electronStore = new Store({
 });
 
 const rootReducer = combineReducers({
-  tasks: tasksReducer,
+  [TASKS_STORE_KEY]: tasksReducer,
   [PREFERENCES_STORE_KEY]: preferencesReducer,
 });
 
