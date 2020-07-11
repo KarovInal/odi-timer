@@ -4,7 +4,7 @@ import { createNotification } from '@/modules/notifications';
 import { getCounterStateByTaskId } from './counter-selectors';
 import { getPreferences, EPreferencesFields } from '@/modules/preferences';
 import { optimisticNoticed, pessimisticNoticed, removeCounter } from './counter-actions';
-import { EControl, INCREASE_TIME, increaseTime, UPDATE_CONTROL } from '@/modules/tasks-module';
+import {EControl, INCREASE_TIME, increaseTime, updateTaskStatus, REMOVE_TASK, UPDATE_CONTROL} from '@/modules/tasks-module';
 
 interface ITimerIds {
   [key: string]: NodeJS.Timeout;
@@ -31,6 +31,8 @@ const pendingOptimisticNotification: IPending = {};
 const pendingPessimisticNotification: IPending = {};
 
 export const counterMiddleware = ({ dispatch, getState}: any) => (next: (params: any) => any) => (action: IAction) => {
+  next(action);
+
   const state = getState();
 
   switch (action.type) {
@@ -81,6 +83,13 @@ export const counterMiddleware = ({ dispatch, getState}: any) => (next: (params:
 
     break;
   }
+  case REMOVE_TASK: {
+    const taskId = action?.payload?.id ?? '';
+    clearInterval(timerIds[taskId]);
+    timerIds[taskId] = null;
+
+    break;
+  }
   case UPDATE_CONTROL: {
     const taskId = action?.payload?.id;
     const control = action?.payload?.control;
@@ -96,6 +105,7 @@ export const counterMiddleware = ({ dispatch, getState}: any) => (next: (params:
     // Clear notification info for finished or replayed task
     if(action?.payload?.control === EControl.replay || action?.payload?.control === EControl.finished) {
       dispatch(removeCounter(taskId));
+      dispatch(updateTaskStatus(taskId));
     }
 
     // Will stop counting time
@@ -105,6 +115,4 @@ export const counterMiddleware = ({ dispatch, getState}: any) => (next: (params:
     }
   }
   }
-
-  next(action);
 };

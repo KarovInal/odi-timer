@@ -14,7 +14,7 @@ export const tasksReducer = (state: ITasksReducer = {}, action: any) => {
       [action.payload.id]: {...action.payload}
     };
   case REMOVE_TASK:
-    return omit(state, action.payload);
+    return omit(state, action.payload?.id ?? '');
   case UPDATE_CONTROL: {
     const taskId = action?.payload?.id ?? '';
 

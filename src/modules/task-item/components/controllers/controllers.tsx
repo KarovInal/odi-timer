@@ -13,7 +13,7 @@ export const Controllers = (props: IControllers) => {
   if(props.control === EControl.pause && props.finalTime === 0) {
     return (
       <>
-        <PlayButton onClick={() => props.handleControl(props.taskId, EControl.play)}/>
+        <PlayButton onClick={e => { e.stopPropagation(); props.handleControl(props.taskId, EControl.play); }}/>
       </>
     );
   }
@@ -21,9 +21,9 @@ export const Controllers = (props: IControllers) => {
   if(props.control === EControl.pause && props.finalTime > 0) {
     return (
       <>
-        <ReplayButton onClick={() => props.handleControl(props.taskId, EControl.replay)}/>
-        <StopButton onClick={() => props.handleControl(props.taskId, EControl.finished)}/>
-        <PlayButton onClick={() => props.handleControl(props.taskId, EControl.play)}/>
+        <ReplayButton onClick={e => { e.stopPropagation(); props.handleControl(props.taskId, EControl.replay); }}/>
+        <StopButton onClick={e => { e.stopPropagation(); props.handleControl(props.taskId, EControl.finished); }}/>
+        <PlayButton onClick={e => { e.stopPropagation(); props.handleControl(props.taskId, EControl.play); }}/>
       </>
     );
   }
@@ -31,7 +31,7 @@ export const Controllers = (props: IControllers) => {
   if(props.control === EControl.play) {
     return (
       <>
-        <PauseButton onClick={() => props.handleControl(props.taskId, EControl.pause)}/>
+        <PauseButton onClick={e => { e.stopPropagation(); props.handleControl(props.taskId, EControl.pause); }}/>
       </>
     );
   }

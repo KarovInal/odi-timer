@@ -1,4 +1,5 @@
 import React from 'react';
+import noop from 'lodash/noop';
 import { msToHms } from '@/utils/ms-to-hms';
 import { Controllers } from './components/controllers';
 import { EControl, ITaskItem } from '@/modules/tasks-module';
@@ -7,14 +8,19 @@ import './task-item-styles.css';
 
 interface ITaskItemProps extends ITaskItem {
   handleControl?: (taskId: string, control: EControl) => void;
+  onClick?: (taskId: string) => void;
 }
 
 export const TaskItem = (props: ITaskItemProps) => {
+  const handleClick = () => {
+    props.onClick && props.onClick(props.id);
+  };
+
   return (
-    <div className='task-item flex-column'>
+    <div className='task-item flex-column' onClick={handleClick}>
       <div className='task-item__top'>
         <div className='d-flex justify-content-between align-items-center'>
-          <span className='task-item__title'>{props.title}</span>
+          <span className='task-item__title' onClick={e => e.stopPropagation()}>{props.title}</span>
           <div className='task-item__final-time d-flex align-items-center justify-content-between'>
             <span>
               {

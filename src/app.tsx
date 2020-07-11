@@ -4,7 +4,6 @@ import { HashRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { store } from './store';
 import { Page } from './modules/page-module';
 import { TaskForm } from '@/modules/task-form-module';
-import { HelperText } from '@/components/helper-text';
 import { TimerList } from '@/modules/timer-list-module';
 import { Preferences } from './modules/preferences';
 import { Statistics } from './modules/statistics';
@@ -15,6 +14,7 @@ import {
   STATISTIC_PATH,
   TIMER_PATH,
   CREATE_TASK,
+  EDIT_TASK
 } from './constants';
 
 export const App = () => {
@@ -36,6 +36,12 @@ export const App = () => {
 
           <Route exact={true} path={CREATE_TASK}>
             <Page headerProps={{ title: 'Adding task', ableToBack: true }}>
+              <TaskForm />
+            </Page>
+          </Route>
+
+          <Route exact={true} path={`${EDIT_TASK}/:taskId`}>
+            <Page headerProps={{ title: 'Edit task', ableToBack: true }}>
               <TaskForm />
             </Page>
           </Route>

@@ -1,6 +1,11 @@
 .task-item {
     background-color: #080A0E;
     margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.task-item:hover {
+    background: #0e1218;
 }
 
 .task-item__top {
@@ -11,6 +16,7 @@
     color: #FFF;
     width: 100%;
     font-size: 12px;
+    cursor: text;
     font-weight: 500;
     overflow: hidden;
     user-select: text;
