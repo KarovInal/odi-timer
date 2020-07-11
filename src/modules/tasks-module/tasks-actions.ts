@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
-import { ITaskItem } from './tasks-types';
-import { CREATE_TASK, REMOVE_TASK, UPDATE_TASK } from './tasks-constants';
+import { EControl, ITaskItem } from './tasks-types';
+import { CREATE_TASK, REMOVE_TASK, UPDATE_TASK, INCREASE_TIME, UPDATE_CONTROL } from './tasks-constants';
 
 interface IPayload<T> {
   type: string;
@@ -25,5 +25,21 @@ export const updateTask = (id: string, data: ITaskItem): IPayload<{ id: string, 
   payload: {
     id,
     data
+  }
+});
+
+export const increaseTime = (id: string, step: number) => ({
+  type: INCREASE_TIME,
+  payload: {
+    id,
+    step
+  }
+});
+
+export const updateControl = (id: string, control: EControl) => ({
+  type: UPDATE_CONTROL,
+  payload: {
+    id,
+    control
   }
 });
