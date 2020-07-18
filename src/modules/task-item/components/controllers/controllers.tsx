@@ -5,8 +5,7 @@ import {PauseButton, PlayButton, ReplayButton, StopButton} from '@/components/co
 interface IControllers {
   control: EControl;
   finalTime: number;
-  taskId: string;
-  handleControl?: (taskId: string, control: EControl) => void;
+  handleControl: (type: EControl) => void;
 }
 
 export const Controllers = (props: IControllers) => {
