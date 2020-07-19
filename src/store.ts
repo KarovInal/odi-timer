@@ -9,7 +9,7 @@ import { counterMiddleware, counterReducer, COUNTER_STORE_KEY } from '@/modules/
 
 declare global {
   interface Window {
-    electronStore: Store;
+    electronStore: Store<{ redux: any }>;
   }
 }
 

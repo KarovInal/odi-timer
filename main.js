@@ -1,21 +1,13 @@
 'use strict'
 
 // Import parts of electron to use
-const { app } = require('electron')
+const { app, Tray, Menu } = require('electron')
 const path = require('path')
 const url = require('url')
 const { menubar } = require('menubar');
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
-
 // Keep a reference for dev mode
-let dev = false;
-
-if (process.env.NODE_ENV !== undefined && process.env.NODE_ENV === 'development') {
-  dev = true
-}
+let dev = process.env.NODE_ENV === 'development';
 
 // Temporary fix broken high-dpi scale factor on Windows (125% scaling)
 // info: https://github.com/electron/electron/issues/9691
@@ -38,21 +30,33 @@ if (dev && process.argv.indexOf('--noDevServer') === -1) {
     protocol: 'file:',
     pathname: path.join(__dirname, 'dist', 'index.html'),
     slashes: true
-  })
+  });
 }
 
-const mb = menubar({
-  index: indexPath,
-  browserWindow: {
-    alwaysOnTop: dev,
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true
+app.on('ready', () => {
+  const mb = menubar({
+    index: indexPath,
+    showDockIcon: false,
+    icon: path.join(__dirname, 'src/assets/icons', 'logoMenubarTemplate.png'),
+    browserWindow: {
+      frame: false,
+      resizable: dev,
+      width: 392,
+      height: 600,
+      webPreferences: {
+        devTools: dev,
+        nodeIntegration: true
+      }
     }
-  }
-});
+  });
 
-mb.on('ready', () => {
-  console.log('Menu bar ready!')
+  mb.on('after-create-window', function() {
+    const contextMenu = Menu.buildFromTemplate ([
+      {label: 'Exit', click: () => mb.app.quit ()}
+    ]);
+
+    mb.tray.on ('right-click', () => {
+      mb.tray.popUpContextMenu (contextMenu);
+    });
+  });
 });

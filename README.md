@@ -2,14 +2,8 @@
 
 #### Run the app
 ```
-yarn start
+npm run start
 ```
 #### Build the app (automatic)
-```
-yarn package
-```
-
-#### Build the app (manual)
-```
-yarn build
-```
+1. ```npm run build``` Build js files
+2. ```npm run make``` This command will make dmg or exe file
