@@ -145,6 +145,7 @@
                 }
               }
             },
+            "background": "./src/assets/icons/dmg-bg.png",
             "icon": "./src/assets/icons/logo-4x.png",
             "name": "Odi timer",
             "format": "ULFO",
