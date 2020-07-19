@@ -1,17 +1,19 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
-import { useDispatch } from 'react-redux';
-import { Input } from '@/components/input';
-import { hmsToMs } from '@/utils/hms-to-ms';
-import { TIMER_PATH } from '@/constants/paths';
-import { useHistory } from 'react-router-dom';
-import { msToPercent } from '@/utils/ms-to-percents';
-import { SaveButton } from '@/components/save-button';
-import { Controller, useForm } from 'react-hook-form';
-import { RemoveButton } from '@/components/remove-button';
-import { CycleProgress } from '@/components/cycle-progress';
-import { createTask, EControl, EStatus } from '@/modules/tasks-module';
+import {useDispatch, useSelector} from 'react-redux';
+import {Input} from '@/components/input';
+import {hmsToMs} from '@/utils/hms-to-ms';
+import {useHistory, useParams} from 'react-router-dom';
+import {TIMER_PATH} from '@/constants/paths';
+import {msToPercent} from '@/utils/ms-to-percents';
+import {SaveButton} from '@/components/save-button';
+import {Controller, useForm} from 'react-hook-form';
+import {getTaskById} from '@/selectors/tasks-selectors';
+import {RemoveButton} from '@/components/remove-button';
+import {CycleProgress} from '@/components/cycle-progress';
+import {createTask, EControl, EStatus, updateTask, removeTask, updateTaskStatus} from '@/modules/tasks-module';
 import './task-form-styles.css';
+import {msToHms} from '@/utils/ms-to-hms';
 
 const requiredLabel = '*required';
 
@@ -22,31 +24,67 @@ const formatChars = {
 };
 
 export const TaskForm = () => {
-  const dispatch = useDispatch();
   const history = useHistory();
-  const { handleSubmit, errors, control, getValues, watch } = useForm();
-  const watchFields = watch(['optimisticTime', 'pessimisticTime']);
+  const dispatch = useDispatch();
+  const { taskId = '' } = useParams();
+  const isEditForm = !!taskId;
+  const taskData = useSelector(getTaskById(taskId));
+  const { handleSubmit, errors, control, getValues, watch } = useForm({
+    defaultValues: {
+      title: taskData?.title ?? undefined,
+      finalTime: taskData?.finalTime ? msToHms(taskData?.finalTime) : undefined,
+      optimisticTime: taskData?.optimisticTime ? msToHms(taskData?.optimisticTime) : undefined,
+      pessimisticTime: taskData?.pessimisticTime ? msToHms(taskData?.pessimisticTime) : undefined,
+    }
+  });
+
+  const watchFields = watch(['optimisticTime', 'pessimisticTime', 'finalTime']);
 
   const onSubmit = (data: any) => {
     if(isEmpty(errors)) {
-      dispatch(createTask({
-        finalTime: 0,
-        title: data.title,
-        status: EStatus.none,
-        control: EControl.pause,
-        optimisticTime: hmsToMs(data.optimisticTime),
-        pessimisticTime: hmsToMs(data.pessimisticTime),
-      }));
+      if(isEditForm) {
+        if(taskData?.control === EControl.finished) {
+          dispatch(updateTask(taskId, {
+            title: data.title,
+            finalTime: hmsToMs(data.finalTime),
+            optimisticTime: hmsToMs(data.optimisticTime),
+            pessimisticTime: hmsToMs(data.pessimisticTime),
+          }));
+        } else {
+          dispatch(updateTask(taskId, {
+            title: data.title,
+            optimisticTime: hmsToMs(data.optimisticTime),
+            pessimisticTime: hmsToMs(data.pessimisticTime),
+          }));
+        }
 
-      history.push(TIMER_PATH);
+        history.goBack();
+        dispatch(updateTaskStatus(taskId));
+      } else {
+        dispatch(createTask({
+          finalTime: 0,
+          title: data.title,
+          status: EStatus.none,
+          control: EControl.pause,
+          optimisticTime: hmsToMs(data.optimisticTime),
+          pessimisticTime: hmsToMs(data.pessimisticTime),
+        }));
+
+        history.push(TIMER_PATH);
+      }
     }
+  };
+
+  const handleRemoveTask = () => {
+    dispatch(removeTask(taskId));
+    history.goBack();
   };
 
   return (
     <div className='task-form-wrap d-flex flex-column justify-content-between'>
       <div>
         <div className='d-flex justify-content-center'>
-          <CycleProgress percents={msToPercent(hmsToMs(watchFields.optimisticTime), hmsToMs(watchFields.pessimisticTime), 0)} />
+          <CycleProgress percents={msToPercent(hmsToMs(watchFields.optimisticTime), hmsToMs(watchFields.pessimisticTime), hmsToMs(watchFields.finalTime))} />
         </div>
         <form className='d-flex flex-wrap task-form' onSubmit={handleSubmit(onSubmit)}>
           <Controller
@@ -60,6 +98,20 @@ export const TaskForm = () => {
             placeholder='Add a task title'
             label={errors.title ? requiredLabel : null}
           />
+          {
+            isEditForm && taskData?.control === EControl.finished && (
+              <Controller
+                as={Input}
+                maskChar='0'
+                mask="aa:bc:bc"
+                className='col-12'
+                control={control}
+                name='finalTime'
+                formatChars={formatChars}
+                placeholder='Final time'
+              />
+            )
+          }
           <Controller
             green
             as={Input}
@@ -102,7 +154,11 @@ export const TaskForm = () => {
         </form>
       </div>
       <div className='d-flex justify-content-end task-form__control'>
-        <RemoveButton style={{ marginRight: '12px' }} />
+        {
+          isEditForm && (
+            <RemoveButton onClick={handleRemoveTask} style={{ marginRight: '12px' }} />
+          )
+        }
         <SaveButton onClick={handleSubmit(onSubmit)} />
       </div>
     </div>

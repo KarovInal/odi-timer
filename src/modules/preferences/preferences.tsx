@@ -2,10 +2,10 @@ import React, { SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { curry } from 'lodash';
 import Switch from 'rc-switch';
-import 'rc-switch/assets/index.css';
 import { P12Grey, P14, P12Bold } from '@/components/paragraphs';
 import { changeFieldValue } from './preferences-reducer';
 import { EPreferencesFields } from './preferences-enums';
+import 'rc-switch/assets/index.css';
 import './preferences.css';
 
 type TPreferencesProps = {

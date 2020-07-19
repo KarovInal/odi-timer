@@ -11,7 +11,7 @@ type TTopBlockProps = {
 };
 
 export const TopBlock = React.memo(({ finishedTasks }: TTopBlockProps) => {
-  const { great, normal, bad } = compose(
+  const { great = 0, normal = 0, bad = 0 } = compose(
     mapValues(size),
     groupBy('status'),
   )(finishedTasks);

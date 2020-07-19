@@ -8,8 +8,8 @@ export const tasksToPercents = curry((
   const all = great + normal + bad;
 
   return [
-    (great * 100) / all,
-    (normal * 100) / all,
-    (bad * 100) / all,
+    ((great * 100) / all) || 0,
+    ((normal * 100) / all) || 0,
+    ((bad * 100) / all) || 0,
   ];
 });

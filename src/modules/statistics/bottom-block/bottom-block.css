@@ -15,18 +15,26 @@
     background: #0e1218;
 }
 
+.bottom-block-item-label {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bottom-block-item-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .bottom-block-item-dot {
     display: block;
     width: 4px;
     height: 4px;
     border-radius: 50%;
     margin-right: 8px;
-}
-
-.bottom-block-item-label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 
 .bottom-block-item-dot-bad {
@@ -41,6 +49,12 @@
     background: #57BC62;
 }
 
+.bottom-block-item-bad,
+.bottom-block-item-normal,
+.bottom-block-item-great {
+    min-width: 52px;
+    text-align: right;
+}
 
 .bottom-block-item-bad {
     color: #EA4E43;

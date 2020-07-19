@@ -39,14 +39,16 @@
     "prod": "cross-env NODE_ENV=production webpack --mode production --config webpack.build.config.js && electron --noDevServer .",
     "start": "cross-env NODE_ENV=development webpack-dev-server -p --hot --host 0.0.0.0 --config=./webpack.dev.config.js --mode development",
     "build": "cross-env NODE_ENV=production webpack --config webpack.build.config.js --mode production",
-    "package": "npm run build",
-    "postpackage": "electron-packager ./ --out=./builds",
+    "package": "electron-forge package",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "eslint --ext .tsx,.ts src/",
-    "lint:fix": "eslint --fix --ext .tsx,.ts src/"
+    "lint:fix": "eslint --fix --ext .tsx,.ts src/",
+    "make": "cross-env NODE_ENV=production electron-forge make"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/html-webpack-plugin": "^3.2.3",
     "@types/lodash": "^4.14.156",
     "@types/react": "^16.9.38",
@@ -57,6 +59,7 @@
     "@types/redux-logger": "^3.0.8",
     "@types/redux-thunk": "^2.1.0",
     "@types/uuid": "^8.0.0",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^5.2.0",
     "lodash": "^4.17.15",
     "menubar": "^9.0.1",
@@ -79,7 +82,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-react": "^7.10.4",
+    "@electron-forge/cli": "6.0.0-beta.52",
+    "@electron-forge/maker-deb": "6.0.0-beta.52",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.52",
+    "@electron-forge/maker-rpm": "6.0.0-beta.52",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.52",
+    "@electron-forge/maker-zip": "6.0.0-beta.52",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-backgrounds": "^5.3.19",
     "@storybook/addon-info": "^5.3.19",
@@ -95,7 +104,6 @@
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "electron": "^9.0.0",
-    "electron-packager": "^14.2.1",
     "eslint": "^7.3.0",
     "eslint-plugin-react": "^7.20.0",
     "file-loader": "^6.0.0",
@@ -113,5 +121,37 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "name": "Odi timer",
+        "overwrite": true,
+        "icon": "./src/assets/icons/logo-mac.icns"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": ["win32"]
+        },
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "additionalDMGOptions": {
+              "window": {
+                "size": {
+                  "width": 600,
+                  "height": 400
+                }
+              }
+            },
+            "icon": "./src/assets/icons/logo-4x.png",
+            "name": "Odi timer",
+            "format": "ULFO",
+            "overwrite": true
+          }
+        }
+      ]
+    }
   }
 }
